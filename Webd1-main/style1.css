@@ -1,0 +1,370 @@
+body{
+    font-family: 'Lora', serif;
+    background-color: black;
+    margin: 0.6vh 0px ;
+    overflow-x:hidden;
+    
+}
+
+header {
+    border-bottom: 2px solid #ffffff;
+}
+
+header nav {
+    padding: 1.8vh 20vb;
+    justify-content: center;
+    display: flex;
+    gap: 12vb;
+}
+
+nav a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: aliceblue;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: rgb(182, 182, 182);
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    margin-top: 5px;
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Video */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+header .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.hero h2 {
+    color: #ffffff;
+}
+
+#the {
+    font-size: 3vi;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    position: absolute;
+    left: 26.3%;
+    top: 30.7%;
+    text-shadow: 0 0 5px #00000060;
+}
+
+#coldplay {
+    padding: 12vh;
+    text-align: center;
+    font-size: 10vi;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #00000060;
+}
+
+#experience{
+    font-size: 3vi;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    position: absolute;
+    left: 54.3%;
+    top: 49.9%;
+    text-shadow: 0 0 5px #00000060;
+}
+.spacer {
+    height: 2rem;
+}
+
+.about-us {
+    height: 100vh;
+    width: 200vw;
+    background-color: #0f0f0e;
+    color:white;
+    justify-content: center;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    background-image: url("starrs1.jpg");
+    
+    
+    
+}
+
+.about-us h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    top: 5%;
+    left: 7%;
+    font-weight: bolder;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.437);
+    
+
+        font-family: 'Montserrat', sans-serif; /* Example font */
+        color: #00d4ff; /* Coldplay blue */
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.about-us p {
+    text-align: left;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 700px;
+    position: relative;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    top: 7%;
+    left: 5%;
+    z-index: 10;
+    animation: fadeInUp 2s ease-out forwards;
+    animation-delay: 0.5s; 
+    
+}
+
+.albumpic {
+    position:relative;
+    top: -450px;
+    left: 800px;
+    border-radius: 8px;
+    
+    
+    display:flex;
+    
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 768px) {
+    .albumpic {
+        float: none;
+        margin: 20px auto;
+        display: block;
+        max-width: 90%;
+    }
+}
+
+/**/
+
+.members {
+    position: relative;
+    background: linear-gradient(to bottom, #1a1a1a, #111);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    background-image: url("stars2.jpg");
+   filter:blur(0.75px)
+    background-blend-mode: screen; 
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    
+    z-index: 0; 
+}
+
+#members-heading {
+    font-size: 6rem;
+    color: #ffffff;
+    margin: 0 0;
+    text-align: center;
+    position: relative;
+    top: 2.1rem;
+    text-shadow: 0 0 12px #000000;
+    z-index: 1;
+}
+
+.content {
+
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;  
+}
+
+.card {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(237, 217, 217, 0.4);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    background-color: rgba(8, 8, 51, 0.856);
+    max-width: 310px; 
+    max-height: 500px;
+    background: rgba(255, 255, 255, 0.15); /* Slightly less opaque */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Add a subtle border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.05); /* Add scale on hover */
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+
+}
+
+.card h3 {
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+    color: #ffffff;
+    font-size: 2rem;
+    text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.866);
+}
+
+.card img {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #0202026a;
+    border-radius: 7px;
+    max-width: 275px; 
+    max-height: 350px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+
+.card p {
+    margin: 8px 0 0;
+    font-size: 1.1rem;
+    color: #eded4e;
+    text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.866);
+}
+
+
+
+
+
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #ffdc62;
+    border-radius: 6px;
+}
+
+
+
+
+
+.play-pause-btn {
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 123, 255, 0.7);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.play-pause-btn:hover {
+    background-color: rgba(0, 123, 255, 0.9);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.95);
+    margin-top: 40px;
+    
+
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+.top-right {
+    position: absolute;
+    transform: translateX(600%);
+    max-width: 100%; 
+    max-height: 100%;
+    transform: translateX(1250%);
+    margin-top:-50px;
+    transform: scaleX(-1);
+  
+
+    
+    
+    
+}
+.top-right_1 {
+    position: absolute;
+    transform: translateX(600%);
+    max-width: 100%; 
+    max-height: 100%;
+    transform: translateX(1250%);
+    margin-top:-50px;
+  
+   
+    
+    
+}
+.top-right_2 {
+    position: absolute;
+    transform: translateX(20%);
+    max-width: 100%; 
+    max-height: 100%;
+    transform: translateX(1250%);
+    margin-top:-50px;
+    }

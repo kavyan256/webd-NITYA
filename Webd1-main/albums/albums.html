@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coldplay Albums</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: black;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .rainbow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,150,0.3), rgba(0,255,255,0.3));
+            opacity: 0.3;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        .album-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .album {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 900px;
+            height: 100vh; /* Each album takes up the full height of the viewport */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+            transform: scale(0.9);
+            visibility: hidden;
+        }
+        .album.active {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible;
+        }
+        .album img {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .album-info {
+            text-align: left;
+        }
+        .album-info h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .album-info p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .album-info a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="rainbow"></div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search Coldplay albums...">
+    </div>
+    <div class="album-container" id="albumContainer">
+        <div class="album active" id="album1">
+            <img src="https://upload.wikimedia.org/wikipedia/en/2/29/Coldplayparachutesalbumcover.jpg" alt="Parachutes">
+            <div class="album-info">
+                <h2>Parachutes (2000)</h2>
+                <p>Featuring hits like "Yellow" and "Shiver".</p>
+                <a href="https://en.wikipedia.org/wiki/Parachutes_(Coldplay_album)" target="_blank">Learn more</a>
+            </div>
+        </div>
+        <div class="album" id="album2">
+            <img src="https://upload.wikimedia.org/wikipedia/en/5/56/A_Rush_of_Blood_to_the_Head.png" alt="A Rush of Blood to the Head">
+            <div class="album-info">
+                <h2>A Rush of Blood to the Head (2002)</h2>
+                <p>Home to "Clocks" and "The Scientist".</p>
+                <a href="https://en.wikipedia.org/wiki/A_Rush_of_Blood_to_the_Head" target="_blank">Learn more</a>
+            </div>
+        </div>
+        <div class="album" id="album3">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/8b/Coldplay_-_X%26Y.png" alt="X&Y">
+            <div class="album-info">
+                <h2>X&Y (2005)</h2>
+                <p>Includes "Fix You" and "Speed of Sound".</p>
+                <a href="https://en.wikipedia.org/wiki/X%26Y" target="_blank">Learn more</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Coldplay Fan Page | Made with ❤️</p>
+    </div>
+    <script>
+        let albums = document.querySelectorAll('.album');
+        let index = 0;
+
+        function showAlbum(idx) {
+            
+            if (idx < 0) idx = albums.length - 1;
+            if (idx >= albums.length) idx = 0;
+
+            albums.forEach((album, i) => {
+                album.classList.remove('active');
+                album.style.visibility = 'hidden'; 
+                if (i === idx) {
+                    album.classList.add('active'); 
+                    album.style.visibility = 'visible'; 
+                }
+            });
+        }
+
+       
+        window.addEventListener('wheel', (event) => {
+            if (event.deltaY > 0) {
+                index++; 
+            } else if (event.deltaY < 0) {
+                index--; 
+            }
+            showAlbum(index);
+        });
+
+        showAlbum(index);
+    </script>
+</body>
+</html>
+
+
+
+
+
+

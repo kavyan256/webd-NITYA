@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coldplay Albums</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --bg-color: #111;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .rainbow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,150,0.2), rgba(0,255,255,0.2));
+            opacity: 0.2;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(3px);
+        }
+
+        .album-container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 100px auto;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            background-color:rgba(166, 166, 76, 0.1)
+            background-color: transparent;
+        }
+
+        .album {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px var(--shadow-color);
+            overflow: hidden;
+            
+            border: 2px solid transparent; 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+            position: relative; 
+            border: 3px solid transparent; 
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .album:hover {
+            transform: scale(1.05);
+        }
+
+        .album img {
+            width: 300px; 
+            height: 300px; 
+            border-radius: 10px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+        .album-info {
+            text-align: center;
+        }
+
+        .album-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .album-info p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .album-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .album-info a:hover {
+            color: #00b3e6;
+            transform: scale(1.05);
+            border-color: var(--primary-color); 
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+            position: relative;
+            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        }
+        .search-bar {
+            position: fixed;
+            top: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: auto;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 10px; 
+            padding: 10px 20px; 
+            display: flex; 
+            align-items: center; 
+            z-index: 1001; 
+            width: 50%;
+            max-width: 600px;
+        }
+
+        .search-bar input {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 8px;
+            width: 200px;
+            backdrop-filter: blur(3px);
+            margin-right: 10px; 
+            width: calc(100% - 60px);
+        }
+
+       
+        body::before { 
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px; 
+            background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4F0082, #9400D3); /* Rainbow gradient */
+            z-index: 1002;
+        }
+        
+
+        
+        
+
+       
+
+        .album::before { /
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.2), transparent); /* Gradient overlay */
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+            pointer-events: none; 
+        }
+
+        .album:hover::before {
+            opacity: 1;
+        }
+
+        
+        .footer::before {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px; 
+            background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4F0082, #9400D3); /* Rainbow gradient */
+            z-index: 1002;
+        }
+        .top-right {
+         position: absolute;
+         transform: translateX();
+         max-width: 100%; 
+         max-height: 100%;
+         margin-top: 600px;
+         transform: scaleX(-1);
+    }
+
+    .top-right_1 {
+         position: absolute;
+         transform: translateX(1250%);
+         max-width: 100%; 
+         max-height: 100%;
+         margin-top: 100px;
+         
+         
+    }
+    .top-right_2 {
+         position: absolute;
+         transform: translateX(1300%);
+         max-width: 100%; 
+         max-height: 100%;
+         margin-top: 1150px;
+         
+         
+    }
+    .top-right_3{
+        position: absolute;
+         transform: translateX(90%);
+         max-width: 100%; 
+         max-height: 100%;
+         margin-top: 1700px;
+         transform: scaleX(-1);
+    }
+    
+    
+    
+    .header1{
+        text-align:center;
+        color:rgb(83, 192, 242);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3.5rem;
+    }
+
+    </style>
+    
+</head>
+<body>
+    <div class="rainbow"></div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search Coldplay albums...">
+        <img src="magn_glass.jpg" alt="magn_glass" width="35px" height="30px">
+       
+        
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+    
+    
+    <img src="footer-flower.webp" class="top-right" width="100px" height="100px">
+   
+    <img src="footer-flower.webp" class="top-right_2" width="100px" height="100px">
+    <br>
+    <h1 class="header1">ALBUMS</h1>
+
+    
+    <div class="album-container">
+        <div class="album">
+            <img src="abm2.jpg" alt="parachutes" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Parachutes (2000)</h2>
+                <p>Featuring hits like 'Yellow' and 'Shiver'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+parachutes" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm3.jpg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>A Rush of Blood to the Head (2002)</h2>
+                <p>Home to 'Clocks' and 'The Scientist'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+a+rush+of+blood+to+the+head" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm6.jpg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>X&Y (2005)</h2>
+                <p>Includes 'Fix You' and 'Speed of Sound'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+x%26y" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm4.jpeg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Mylo Xyloto (2011)</h2>
+                <p>Includes 'Paradise' and 'Every Teardrop Is a Waterfall'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+mylo+xyloto" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm8.jpg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Ghost Stories (2014)</h2>
+                <p>Features 'Magic' and 'A Sky Full of Stars'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+ghost+stories" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm9.jpeg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>A Head Full of Dreams (2015)</h2>
+                <p>Includes 'Adventure of a Lifetime' and 'Hymn for the Weekend'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+a+head+full+of+dreams" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm5.jpeg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Everyday Life (2019)</h2>
+                <p>A double album with tracks like 'Orphans' and 'Arabesque'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+everyday+life" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm10.jpg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Music of the Spheres (2021)</h2>
+                <p>Features 'Higher Power' and 'My Universe'.</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+music+of+the+spheres" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="album">
+            <img src="abm1.jpg" alt="moon music" style="width: 300px; height: 300px;">
+            <div class="album-info">
+                <h2>Moon Music (2024)</h2>
+                <p>Features 'feelslikeimfallinginlove' and 'biutyful'</p>
+                <a href="https://www.youtube.com/results?search_query=coldplay+moon+music" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+    
+    </div>
+    <img src="footer-flower.webp" class="top-right_3" width="100px" height="100px" style="float:right">
+    
+    <div class="footer">
+        <p>&copy; 2025 Coldplay ❤️</p>
+
+    </div>
+</body>
+</html>z
